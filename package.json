@@ -1,0 +1,48 @@
+{
+  "name": "mcp-inspector",
+  "version": "1.0.0",
+  "description": "📊 Real-time monitoring dashboard for MCP (Model Context Protocol) servers",
+  "type": "module",
+  "bin": {
+    "mcp-inspector": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "start": "node dist/cli.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "anthropic",
+    "monitoring",
+    "dashboard",
+    "metrics",
+    "developer-tools"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "express": "^4.21.2",
+    "open": "^10.0.0",
+    "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.23",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mcp-inspector.git"
+  }
+}

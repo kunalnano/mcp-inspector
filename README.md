@@ -2,7 +2,7 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/kunalnano/mcp-inspector)](https://github.com/kunalnano/mcp-inspector/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Issues](https://img.shields.io/github/issues/kunalnano/mcp-inspector)](https://github.com/kunalnano/mcp-inspector/issues)
+[![GitHub Release](https://img.shields.io/github/v/release/kunalnano/mcp-inspector)](https://github.com/kunalnano/mcp-inspector/releases)
 
 **Real-time monitoring dashboard for MCP (Model Context Protocol) servers.** Track all tool calls, response times, and usage patterns from Claude, Port.io, or any MCP-compatible client.
 
@@ -22,47 +22,42 @@ Monitor everything happening between AI assistants and their tools:
 - 🛠️ **CLI Tools** - Simple commands for monitoring and analysis
 - 🎨 **Beautiful UI** - Professional gradient design with animations
 
-## 🚀 Quick Install
+## 🚀 Installation
 
-### One-Line Install (Easiest)
+### Option 1: One-Line Install (Recommended)
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/kunalnano/mcp-inspector/main/install.sh | bash
 ```
 
-Then start with:
+### Option 2: Homebrew (macOS)
+
 ```bash
-mcp-inspector start
+brew tap kunalnano/mcp-inspector https://github.com/kunalnano/mcp-inspector
+brew install mcp-inspector
 ```
 
-### Manual Install
+### Option 3: Manual Install
 
 ```bash
-# Clone the repository
 git clone https://github.com/kunalnano/mcp-inspector.git
 cd mcp-inspector
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Start the dashboard
 npm start
+```
+
+## 📖 Quick Start
+
+### 1. Start the Dashboard
+
+```bash
+mcp-inspector start
 ```
 
 Dashboard opens at **http://localhost:3456**
 
-## 📖 Quick Start
-
-### 1. Start Monitoring
-
-```bash
-mcp-inspector start
-```
-
-### 2. Configure Your MCP Client
+### 2. Configure Your MCP Client (Optional)
 
 For Claude Desktop:
 ```bash
@@ -73,15 +68,16 @@ Copy output to: `~/Library/Application Support/Claude/claude_desktop_config.json
 
 ### 3. Watch Live Metrics
 
-Every MCP tool call now appears in the dashboard!
+Every MCP tool call now appears in real-time!
 
 ## 🛠️ CLI Commands
 
-```bash
-mcp-inspector start          # Launch dashboard
-mcp-inspector analyze        # Show metrics summary
-mcp-inspector generate-config # Create Claude config
-```
+| Command | Description |
+|---------|-------------|
+| `mcp-inspector start` | Launch dashboard |
+| `mcp-inspector analyze` | Show metrics summary |
+| `mcp-inspector generate-config` | Create Claude config |
+| `mcp-inspector --version` | Show version |
 
 ### Options
 
@@ -99,59 +95,90 @@ Automatically tracks all Port.io operations:
 - Action executions
 - Search operations
 
-## 📊 Dashboard Views
+## 📊 Dashboard Features
 
-### Metrics Cards
-- Total Requests
+### Live Metrics
+- Total Requests Count
 - Average Response Time
-- Success Rate
+- Success Rate Percentage
 - Unique Tools Used
 
-### Charts
-- **Timeline** - Response times over time
-- **Distribution** - Tool usage breakdown
-
-### Request Table
-- Timestamp, tool name, arguments
-- Response time and status
-- Scrollable history
+### Visualizations
+- **Timeline Chart** - Response times over time
+- **Tool Distribution** - Doughnut chart of usage
+- **Request Table** - Detailed history with filtering
 
 ## 🧑‍💻 Development
 
 ```bash
-# Clone repo
+# Clone repository
 git clone https://github.com/kunalnano/mcp-inspector.git
 cd mcp-inspector
 
-# Install deps
+# Install dependencies
 npm install
 
-# Development mode
+# Development mode with hot reload
 npm run dev
 
-# Build
+# Build for production
 npm run build
+
+# Run tests
+npm test
+```
+
+## 📁 Project Structure
+
+```
+mcp-inspector/
+├── src/                 # TypeScript source
+│   ├── cli.ts          # CLI entry point
+│   ├── dashboard-server.ts
+│   ├── mcp-server.ts
+│   └── proxy-server.ts
+├── public/             # Dashboard UI
+│   └── index.html
+├── Formula/            # Homebrew formula
+│   └── mcp-inspector.rb
+├── dist/              # Compiled JavaScript
+└── package.json
 ```
 
 ## 📝 Data Storage
 
-Metrics stored locally in `.mcp-inspector/metrics.json`
+Metrics are stored locally in `.mcp-inspector/metrics.json`
+
+```json
+{
+  "requests": [
+    {
+      "id": "1234567890",
+      "tool": "Port.io:get_entities",
+      "arguments": {...},
+      "timestamp": "2025-01-16T10:00:00Z",
+      "responseTime": 145,
+      "success": true
+    }
+  ]
+}
+```
 
 ## 🤝 Contributing
 
-1. Fork the repo
-2. Create feature branch
-3. Commit changes
-4. Push to branch
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing`)
+3. Commit changes (`git commit -m 'Add feature'`)
+4. Push to branch (`git push origin feature/amazing`)
 5. Open Pull Request
 
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE)
 
-## 🙏 Credits
+## 🙏 Acknowledgments
 
-Built for the MCP ecosystem by the community.
+Built for the MCP ecosystem by the community. Special thanks to Port.io users!
 
 ---
 

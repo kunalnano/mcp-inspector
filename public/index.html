@@ -74,6 +74,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 5px;
         }
         
@@ -91,12 +92,19 @@
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
+            position: relative;
+            height: 400px; /* Fixed height */
         }
         
         .chart-container h2 {
             color: #333;
             margin-bottom: 20px;
             font-size: 1.5em;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 320px; /* Fixed canvas container height */
         }
         
         .requests-table {
@@ -106,12 +114,26 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
             overflow-x: auto;
+            max-height: 600px; /* Limit table height */
+            overflow-y: auto;
         }
         
         .requests-table h2 {
             color: #333;
             margin-bottom: 20px;
             font-size: 1.5em;
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 10;
+            padding-bottom: 10px;
         }
         
         table {
@@ -128,12 +150,27 @@
             text-transform: uppercase;
             font-size: 0.85em;
             letter-spacing: 1px;
+            position: sticky;
+            top: 50px;
+            z-index: 5;
         }
         
         td {
             padding: 15px;
             border-bottom: 1px solid #e0e0e0;
             color: #333;
+        }
+        
+        td code {
+            display: block;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            background: #f5f5f5;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 0.85em;
         }
         
         tr:hover {
@@ -226,6 +263,25 @@
         .refresh-button:active {
             transform: scale(0.95);
         }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+            
+            .chart-wrapper {
+                height: 220px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -262,16 +318,20 @@
         
         <div class="chart-container">
             <h2>📊 Request Timeline</h2>
-            <canvas id="timelineChart"></canvas>
+            <div class="chart-wrapper">
+                <canvas id="timelineChart"></canvas>
+            </div>
         </div>
         
         <div class="chart-container">
             <h2>🛠️ Tool Usage Distribution</h2>
-            <canvas id="toolChart"></canvas>
+            <div class="chart-wrapper">
+                <canvas id="toolChart"></canvas>
+            </div>
         </div>
         
         <div class="requests-table">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div class="table-header">
                 <h2>📝 Recent Requests</h2>
                 <button class="refresh-button" onclick="fetchMetrics()">↻ Refresh</button>
             </div>
@@ -294,8 +354,9 @@
         let toolChart = null;
         let eventSource = null;
         
-        // Initialize charts
+        // Initialize charts with proper sizing
         function initCharts() {
+            // Timeline Chart
             const timelineCtx = document.getElementById('timelineChart').getContext('2d');
             timelineChart = new Chart(timelineCtx, {
                 type: 'line',
@@ -336,6 +397,7 @@
                 }
             });
             
+            // Tool Usage Chart
             const toolCtx = document.getElementById('toolChart').getContext('2d');
             toolChart = new Chart(toolCtx, {
                 type: 'doughnut',
@@ -360,7 +422,13 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'right'
+                            position: 'right',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    size: 12
+                                }
+                            }
                         }
                     }
                 }
@@ -461,7 +529,7 @@
                             <tr>
                                 <td>${new Date(r.timestamp).toLocaleString()}</td>
                                 <td><strong>${r.tool}</strong></td>
-                                <td><code>${JSON.stringify(r.arguments || {}, null, 2)}</code></td>
+                                <td><code title="${JSON.stringify(r.arguments || {})}">${JSON.stringify(r.arguments || {})}</code></td>
                                 <td class="response-time">${r.responseTime}ms</td>
                                 <td>
                                     <span class="status-badge ${r.success ? 'status-success' : 'status-error'}">

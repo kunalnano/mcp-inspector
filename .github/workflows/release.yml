@@ -42,6 +42,6 @@ jobs:
           npm install -g mcp-inspector
           ```
           
-          See [CHANGELOG](https://github.com/kunalnano/mcp-inspector/blob/main/CHANGELOG.md) for details.
+          See [CHANGELOG](https://github.com/kunalnano/mcp-monitor/blob/main/CHANGELOG.md) for details.
         draft: false
         prerelease: false

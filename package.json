@@ -24,7 +24,7 @@
     "metrics",
     "developer-tools"
   ],
-  "author": "Your Name",
+  "author": "Kunal Nano",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
@@ -45,6 +45,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/mcp-inspector.git"
+    "url": "https://github.com/kunalnano/mcp-monitor.git"
   }
 }

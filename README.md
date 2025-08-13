@@ -1,12 +1,12 @@
-# 🔍 MCP Monitor (formerly MCP Inspector)
+# 🔍 MCP Monitor
 
-[![GitHub Stars](https://img.shields.io/github/stars/kunalnano/mcp-inspector)](https://github.com/kunalnano/mcp-inspector/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/kunalnano/mcp-monitor)](https://github.com/kunalnano/mcp-monitor/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Release](https://img.shields.io/github/v/release/kunalnano/mcp-inspector)](https://github.com/kunalnano/mcp-inspector/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/kunalnano/mcp-monitor)](https://github.com/kunalnano/mcp-monitor/releases)
 
 **Real-time monitoring dashboard for MCP (Model Context Protocol) servers.** Track all tool calls, response times, and usage patterns from Claude, Port.io, or any MCP-compatible client.
 
-> **Note:** This is MCP Monitor - a different tool from the other mcp-inspector. Our tool focuses on Port.io integration and provides a simple, beautiful dashboard without authentication complexity.
+> **Note:** MCP Monitor is a simple, authentication-free monitoring tool focused on Port.io integration and beautiful dashboards.
 
 ## 🎯 Why MCP Monitor?
 
@@ -30,7 +30,7 @@ Monitor everything happening between AI assistants and their tools:
 
 ```bash
 # Clone and install
-git clone https://github.com/kunalnano/mcp-inspector.git mcp-monitor
+git clone https://github.com/kunalnano/mcp-monitor.git
 cd mcp-monitor
 npm install
 npm run build
@@ -42,7 +42,14 @@ npm start
 ### Option 2: Quick Install Script
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/kunalnano/mcp-inspector/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/kunalnano/mcp-monitor/main/install.sh | bash
+```
+
+### Option 3: Homebrew (macOS)
+
+```bash
+brew tap kunalnano/mcp-monitor https://github.com/kunalnano/mcp-monitor
+brew install mcp-monitor
 ```
 
 ## 📖 Quick Start
@@ -57,11 +64,11 @@ npm start
 mcp-monitor start
 ```
 
-Dashboard opens at **http://localhost:3456** (not 6274!)
+Dashboard opens at **http://localhost:3456**
 
 ### 2. No Configuration Needed!
 
-Unlike other tools, MCP Monitor works immediately without:
+Unlike other tools, MCP Monitor works immediately:
 - No proxy authentication
 - No complex setup
 - No token configuration
@@ -79,9 +86,9 @@ Every MCP tool call appears in real-time with:
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Launch dashboard at port 3456 |
-| `mcp-monitor start` | Launch dashboard (if installed) |
+| `mcp-monitor start` | Launch dashboard at port 3456 |
 | `mcp-monitor analyze` | Show metrics summary |
+| `mcp-monitor generate-config` | Generate Claude config |
 | `mcp-monitor --version` | Show version |
 
 ### Options
@@ -100,36 +107,30 @@ Specifically designed for Port.io operations:
 - Action executions
 - Search operations
 
-## 🆚 Comparison with Other Tools
-
-| Feature | MCP Monitor (Ours) | Other mcp-inspector |
-|---------|-------------------|---------------------|
-| **Dashboard URL** | http://localhost:3456 | http://localhost:6274 |
-| **Authentication** | None needed ✅ | Proxy token required |
-| **Setup** | Simple - just run | Complex proxy setup |
-| **Port.io Focus** | Yes ✅ | Generic |
-| **Real-time Charts** | Yes ✅ | Limited |
-| **Open Source** | Yes ✅ | Unknown |
-
 ## 📊 Dashboard Features
 
-### What You'll See
-- **Live Metrics Cards** - Total requests, response times, success rates
+### Live Metrics
+- **Total Requests** - Count of all MCP tool calls
+- **Average Response Time** - Execution time in milliseconds
+- **Success Rate** - Percentage of successful calls
+- **Unique Tools** - Number of different tools used
+
+### Visualizations
 - **Timeline Chart** - Response times over time
-- **Tool Distribution** - Pie chart of tool usage
+- **Tool Distribution** - Doughnut chart of usage
 - **Request Table** - Detailed history with search
 
-### No Complex Setup
+### Simple Setup
 - ✅ No authentication tokens
 - ✅ No proxy configuration  
 - ✅ Direct connection to MCP
-- ✅ Simple and straightforward
+- ✅ Works out of the box
 
 ## 🧑‍💻 Development
 
 ```bash
 # Clone repository
-git clone https://github.com/kunalnano/mcp-inspector.git mcp-monitor
+git clone https://github.com/kunalnano/mcp-monitor.git
 cd mcp-monitor
 
 # Install dependencies
@@ -155,9 +156,14 @@ mcp-monitor/
 │   └── mcp-server.ts
 ├── public/             # Dashboard UI
 │   └── index.html      # Beautiful dashboard
+├── Formula/            # Homebrew formula
 ├── dist/              # Compiled JavaScript
 └── package.json
 ```
+
+## 📝 Data Storage
+
+Metrics are stored locally in `.mcp-inspector/metrics.json`
 
 ## 🤝 Contributing
 
@@ -171,13 +177,13 @@ mcp-monitor/
 
 MIT License - see [LICENSE](LICENSE)
 
-## 🙏 Note
+## 🙏 Acknowledgments
 
-This is **MCP Monitor** - not to be confused with other similarly named tools. We focus on simplicity, Port.io integration, and a beautiful dashboard without complex authentication.
+Built for the MCP ecosystem. Special thanks to Port.io users!
 
 ---
 
 <p align="center">
   <b>The Simple MCP Monitoring Solution</b><br>
-  <a href="https://github.com/kunalnano/mcp-inspector">⭐ Star on GitHub</a>
+  <a href="https://github.com/kunalnano/mcp-monitor">⭐ Star on GitHub</a>
 </p>

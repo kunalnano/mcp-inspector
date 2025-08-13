@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-01-16
+
+### Fixed
+- Fixed dashboard layout issues with chart container heights
+- Resolved page stretching problems by constraining chart sizes
+- Fixed table overflow with proper scrolling
+- Added sticky headers for better UX
+- Fixed CI/CD by adding package-lock.json
+- Consolidated branches to use main as default
+
+### Added
+- Homebrew installation support for macOS
+- Automated Homebrew formula updates
+- Version display in CLI (--version flag)
+- Simplified installation instructions
+
+### Changed
+- Simplified README to focus on two installation methods
+- Improved responsive design for mobile devices
+- Enhanced chart rendering performance
+
 ## [1.0.0] - 2025-01-16
 
 ### Added

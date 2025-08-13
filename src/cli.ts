@@ -13,10 +13,12 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const program = new Command();
 
+const packageJson = JSON.parse(await fs.readFile(new URL('../package.json', import.meta.url), 'utf-8'));
+
 program
   .name('mcp-inspector')
   .description('📊 Real-time monitoring for MCP (Model Context Protocol) servers')
-  .version('1.0.0');
+  .version(packageJson.version);
 
 program
   .command('start')

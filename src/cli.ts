@@ -108,14 +108,15 @@ program
       
       console.log(chalk.cyan.bold('\n📈 MCP Metrics Analysis\n'));
       
-      const toolUsage = {};
+      const toolUsage: Record<string, number> = {};
       let totalRequests = 0;
       let totalTime = 0;
       
       for (const req of metrics.requests) {
         totalRequests++;
         totalTime += req.responseTime || 0;
-        toolUsage[req.tool] = (toolUsage[req.tool] || 0) + 1;
+        const tool = req.tool as string;
+        toolUsage[tool] = (toolUsage[tool] || 0) + 1;
       }
       
       console.log(chalk.white('Total Requests:'), totalRequests);

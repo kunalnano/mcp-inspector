@@ -16,7 +16,7 @@ const program = new Command();
 const packageJson = JSON.parse(await fs.readFile(new URL('../package.json', import.meta.url), 'utf-8'));
 
 program
-  .name('mcp-inspector')
+  .name('mcp-monitor')
   .description('📊 Real-time monitoring for MCP (Model Context Protocol) servers')
   .version(packageJson.version);
 

@@ -1,10 +1,10 @@
 {
-  "name": "mcp-inspector",
+  "name": "mcp-monitor",
   "version": "1.0.1",
   "description": "📊 Real-time monitoring dashboard for MCP (Model Context Protocol) servers",
   "type": "module",
   "bin": {
-    "mcp-inspector": "./dist/cli.js"
+    "mcp-monitor": "./dist/cli.js"
   },
   "main": "dist/cli.js",
   "scripts": {

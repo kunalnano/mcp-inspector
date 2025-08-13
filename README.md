@@ -22,19 +22,20 @@ Monitor everything happening between AI assistants and their tools:
 - 🛠️ **CLI Tools** - Simple commands for monitoring and analysis
 - 🎨 **Beautiful UI** - Professional gradient design with animations
 
-## 🚀 Installation
+## 🚀 Quick Install
 
-### Option 1: Homebrew (macOS) - Recommended
+### One-Line Install (Easiest)
 
 ```bash
-brew tap kunalnano/mcp-inspector
-brew install mcp-inspector
+curl -sSL https://raw.githubusercontent.com/kunalnano/mcp-inspector/main/install.sh | bash
+```
 
-# Start the dashboard
+Then start with:
+```bash
 mcp-inspector start
 ```
 
-### Option 2: Clone & Run
+### Manual Install
 
 ```bash
 # Clone the repository

@@ -1,6 +1,6 @@
 {
   "name": "mcp-inspector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "📊 Real-time monitoring dashboard for MCP (Model Context Protocol) servers",
   "type": "module",
   "bin": {
